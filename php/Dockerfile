@@ -78,20 +78,4 @@ RUN docker-php-ext-enable pcov && \
 #Установка через curl
     #Установка composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.25 && \
-    composer self-update --2 && \
-    #Установка symfony-cli
-    curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash && apt install -y symfony-cli && \
-    #Установка Node 20
-    curl -o- 'https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh' | bash && \
-    cd ~/../root/.nvm/ && bash nvm.sh && bash -l -c "nvm install 20"
-
-
-#Установка через wget
-     #Установка mongosh
-RUN wget https://downloads.mongodb.com/compass/mongodb-mongosh_2.0.0_amd64.deb && \
-    apt-get update && apt-get install -y ./mongodb-mongosh_2.0.0_amd64.deb
-
-#Установка через https
-    #Установка amqp
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-RUN chmod +x /usr/local/bin/install-php-extensions && sync && install-php-extensions amqp
+    composer self-update --2
